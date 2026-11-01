@@ -1,0 +1,13 @@
+{
+  "hints": [
+    {
+      "name": "spring.ai.laya.model",
+      "values": [
+        { "value": "auto", "description": "Let the server's router pick a checkpoint per request (the field is omitted)." },
+        { "value": "english", "description": "ModernBERT-large, 421M parameters, English." },
+        { "value": "multilingual", "description": "mmBERT-base, 322M parameters, 100+ languages." },
+        { "value": "typed-decisions", "description": "Fine-tuned for the typed-decisions workflows." }
+      ]
+    }
+  ]
+}

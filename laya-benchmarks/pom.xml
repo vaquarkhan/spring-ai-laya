@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.github.vaquarkhan</groupId>
+		<artifactId>spring-ai-laya-parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>laya-benchmarks</artifactId>
+	<name>Laya for Spring AI :: Benchmarks</name>
+	<description>
+		Accuracy and calibration on public labelled datasets, latency, batch throughput, and the
+		spring-ai-typesafe RAG filter end to end. Runs against Laya, and against Jev too when
+		TYPESAFE_API_KEY is set. Not published; evidence only.
+
+		  LAYA_BASE_URL=http://localhost:8002 mvn -pl laya-benchmarks -am -DskipTests install exec:java
+	</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.github.vaquarkhan</groupId>
+			<artifactId>laya-java-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springaicommunity</groupId>
+			<artifactId>typesafe-spring-ai</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-rag</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>io.github.vaquarkhan.springailaya.benchmark.LayaBenchmark</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

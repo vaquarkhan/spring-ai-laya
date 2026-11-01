@@ -1,0 +1,15 @@
+spring-ai-laya
+Copyright 2026 Vaquar Khan
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+spring-ai-laya is an independent project. It is not affiliated with, or endorsed by,
+TypeSafe AI, the Spring AI Community, or the authors of Laya.
+
+It depends on, but does not include, the following separately licensed artifacts:
+  - org.springaicommunity:typesafe-java-sdk, typesafe-spring-ai, spring-ai-starter-typesafe
+    (spring-ai-typesafe, Apache License 2.0)
+  - Spring AI and Spring Boot (Apache License 2.0)
+
+It talks over HTTP to a separately installed Laya server (https://github.com/NandhaKishorM/laya,
+Apache License 2.0). No Laya code or model weights are included.

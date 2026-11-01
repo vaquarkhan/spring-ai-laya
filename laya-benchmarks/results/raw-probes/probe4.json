@@ -1,0 +1,23 @@
+{
+ "A_singles_sequential": [
+  119.7,
+  98.6
+ ],
+ "B_singles_parallel4": [
+  251.3,
+  188.2
+ ],
+ "C_one_batch_of_8": [
+  168.6,
+  180.6
+ ],
+ "D_two_batches_of_4_sequential": [
+  238.4,
+  128.9
+ ],
+ "E_two_batches_of_4_parallel": [
+  132.9,
+  87.6
+ ],
+ "done": true
+}

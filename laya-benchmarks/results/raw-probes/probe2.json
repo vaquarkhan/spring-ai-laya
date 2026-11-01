@@ -1,0 +1,34 @@
+{
+ "singles_sequential_s": 378.1,
+ "batch16_default": [
+  231.4,
+  200
+ ],
+ "batch16_bs4_sorted": [
+  261.8,
+  200
+ ],
+ "batch16_bs8_sorted": [
+  206.1,
+  200
+ ],
+ "batch4x4_calls": [
+  [
+   44.9,
+   200
+  ],
+  [
+   77.8,
+   200
+  ],
+  [
+   45.4,
+   200
+  ],
+  [
+   38.9,
+   200
+  ]
+ ],
+ "batch4x4_total_s": 207.0
+}

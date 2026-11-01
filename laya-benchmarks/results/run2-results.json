@@ -1,0 +1,189 @@
+{
+  "date" : "2026-10-31T15:39:23.236661500-05:00",
+  "laya" : {
+    "device" : "cpu",
+    "revisions" : {
+      "english" : "7b928d828b7b0e022f929d9bd2e44165aa270148"
+    },
+    "loaded" : [ "english" ]
+  },
+  "host" : {
+    "os" : "Windows 11",
+    "java" : "21.0.12.1",
+    "cores" : 14
+  },
+  "jev" : "not measured: TYPESAFE_API_KEY not set",
+  "accuracy_measured" : "2026-10-31T12:49:17.294479600-05:00",
+  "accuracy" : {
+    "SST-2" : {
+      "source" : "stanfordnlp/sst2 validation",
+      "examples" : 200,
+      "options" : 2,
+      "laya" : {
+        "answered" : 200,
+        "accuracy" : 0.91,
+        "wall_seconds" : 151.046,
+        "ms_per_example" : 755.23,
+        "ece_answer_confidence" : 0.05,
+        "ece_jev_formula" : 0.176,
+        "ece_entropy" : 0.375,
+        "selective" : [ {
+          "min_answer_confidence" : 0.5,
+          "served_share" : 1.0,
+          "accuracy_when_served" : 0.91
+        }, {
+          "min_answer_confidence" : 0.6,
+          "served_share" : 0.93,
+          "accuracy_when_served" : 0.941
+        }, {
+          "min_answer_confidence" : 0.7,
+          "served_share" : 0.84,
+          "accuracy_when_served" : 0.952
+        }, {
+          "min_answer_confidence" : 0.75,
+          "served_share" : 0.8,
+          "accuracy_when_served" : 0.956
+        }, {
+          "min_answer_confidence" : 0.8,
+          "served_share" : 0.745,
+          "accuracy_when_served" : 0.966
+        }, {
+          "min_answer_confidence" : 0.9,
+          "served_share" : 0.605,
+          "accuracy_when_served" : 0.975
+        } ],
+        "gate_floor_0_6" : {
+          "escalated_with_native_confidence" : 0.46,
+          "escalated_with_jev_formula" : 0.255,
+          "decisions_that_differ" : 0.205,
+          "accuracy_of_differing" : 0.927
+        }
+      }
+    },
+    "AG News" : {
+      "source" : "fancyzhx/ag_news test",
+      "examples" : 200,
+      "options" : 4,
+      "laya" : {
+        "answered" : 200,
+        "accuracy" : 0.935,
+        "wall_seconds" : 596.941,
+        "ms_per_example" : 2984.703,
+        "ece_answer_confidence" : 0.067,
+        "ece_jev_formula" : 0.095,
+        "ece_entropy" : 0.221,
+        "selective" : [ {
+          "min_answer_confidence" : 0.5,
+          "served_share" : 0.97,
+          "accuracy_when_served" : 0.959
+        }, {
+          "min_answer_confidence" : 0.6,
+          "served_share" : 0.95,
+          "accuracy_when_served" : 0.968
+        }, {
+          "min_answer_confidence" : 0.7,
+          "served_share" : 0.91,
+          "accuracy_when_served" : 0.973
+        }, {
+          "min_answer_confidence" : 0.75,
+          "served_share" : 0.87,
+          "accuracy_when_served" : 0.971
+        }, {
+          "min_answer_confidence" : 0.8,
+          "served_share" : 0.845,
+          "accuracy_when_served" : 0.976
+        }, {
+          "min_answer_confidence" : 0.9,
+          "served_share" : 0.64,
+          "accuracy_when_served" : 0.984
+        } ],
+        "gate_floor_0_6" : {
+          "escalated_with_native_confidence" : 0.24,
+          "escalated_with_jev_formula" : 0.09,
+          "decisions_that_differ" : 0.15,
+          "accuracy_of_differing" : 0.967
+        }
+      }
+    },
+    "Banking77" : {
+      "source" : "PolyAI/banking77 test, 2 per intent",
+      "examples" : 154,
+      "options" : 77,
+      "laya" : {
+        "answered" : 154,
+        "accuracy" : 0.37,
+        "wall_seconds" : 936.026,
+        "ms_per_example" : 6078.088,
+        "ece_answer_confidence" : 0.527,
+        "ece_jev_formula" : 0.523,
+        "ece_entropy" : 0.549,
+        "selective" : [ {
+          "min_answer_confidence" : 0.5,
+          "served_share" : 0.909,
+          "accuracy_when_served" : 0.379
+        }, {
+          "min_answer_confidence" : 0.6,
+          "served_share" : 0.877,
+          "accuracy_when_served" : 0.378
+        }, {
+          "min_answer_confidence" : 0.7,
+          "served_share" : 0.851,
+          "accuracy_when_served" : 0.389
+        }, {
+          "min_answer_confidence" : 0.75,
+          "served_share" : 0.825,
+          "accuracy_when_served" : 0.402
+        }, {
+          "min_answer_confidence" : 0.8,
+          "served_share" : 0.799,
+          "accuracy_when_served" : 0.407
+        }, {
+          "min_answer_confidence" : 0.9,
+          "served_share" : 0.747,
+          "accuracy_when_served" : 0.435
+        } ],
+        "gate_floor_0_6" : {
+          "escalated_with_native_confidence" : 0.071,
+          "escalated_with_jev_formula" : 0.13,
+          "decisions_that_differ" : 0.058,
+          "accuracy_of_differing" : 0.333
+        }
+      }
+    }
+  },
+  "latency" : {
+    "questions_per_request" : 1,
+    "requests" : 20,
+    "server_inference_ms" : {
+      "p50" : 5313.12,
+      "p95" : 12458.58,
+      "min" : 3065.41,
+      "max" : 14406.16
+    },
+    "client_ms" : {
+      "p50" : 5337.438,
+      "p95" : 12497.546,
+      "min" : 3082.983,
+      "max" : 14421.515
+    }
+  },
+  "systemOneAll" : {
+    "requests" : 32,
+    "adapter_settings" : "rowsPerBatchCall=16, maxConcurrentBatchCalls=1",
+    "plain_typesafe_client_fanout4_ms_runs" : [ 308415.245, 69674.762 ],
+    "laya_adapter_ms_runs" : [ 58794.962, 31672.761 ],
+    "plain_succeeded" : 32,
+    "adapter_succeeded" : 32,
+    "speedup_best_of_runs" : 2.2,
+    "same_label" : "32/32"
+  },
+  "ragFilter" : {
+    "passages" : 16,
+    "questions_per_passage" : 4,
+    "plain_typesafe_client_ms_runs" : [ 137515.154, 269152.854 ],
+    "laya_adapter_ms_runs" : [ 218379.18, 218359.414 ],
+    "speedup_best_of_runs" : 0.63,
+    "kept_plain" : [ "CONFLICTING: North Korea Talks Still On, China Tells Downer (Reuters) Reuters - ..." ],
+    "kept_adapter" : [ "CONFLICTING: North Korea Talks Still On, China Tells Downer (Reuters) Reuters - ..." ]
+  }
+}

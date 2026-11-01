@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laya for Spring AI: local, open-weight typed decisions, compatible with spring-ai-typesafe.">
+  <title>Laya for Spring AI</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a class="brand" href="#top"><span class="brand-mark"></span>spring-ai-<span style="color:#087f8c">laya</span></a>
+  <div class="nav-links"><a href="#models">Model choices</a><a href="#evidence">Evidence</a><a href="#use-cases">Use cases</a><a href="laya-spring-ai-guide.html">Tutorial</a><a href="#tools">Developer tools</a><a href="#benchmarks">Benchmarks</a></div>
+</div></nav>
+
+<main id="top">
+<header class="hero"><div class="hero-inner">
+  <p class="eyebrow">Open-weight System One decisions for Spring AI</p>
+  <h1>Run the decisions that belong next to your data.</h1>
+  <p class="hero-copy">Laya adds a private, self-hosted decision-model path to spring-ai-typesafe. Use it for fast, repeatable routing and triage. Keep Jev available when your workload calls for a managed decision service.</p>
+  <div class="actions"><a class="button primary" href="laya-spring-ai-guide.html">Read the full tutorial</a><a class="button secondary" href="DEVELOPER-TUTORIAL.md">Reference guide</a></div>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>Local by design</strong><span>Run on infrastructure you control</span></div>
+    <div class="hero-stat"><strong>One API</strong><span>spring-ai-typesafe 0.4.0 components keep their API</span></div>
+    <div class="hero-stat"><strong>Escalate by policy</strong><span>Laya first, Jev for selected decisions</span></div>
+  </div>
+</div></header>
+
+<section class="white" id="models"><div class="container">
+  <div class="section-heading"><p class="eyebrow" style="color:#087f8c">Model choices</p><h2>Two deployment models. One Spring AI integration.</h2><p>Laya and Jev both answer typed choice, score and noul questions through the System One API. They solve different operational needs, so the right approach is to use each deliberately.</p></div>
+  <div class="grid-2">
+    <article class="card laya"><span class="pill">Laya</span><h3>Private, self-hosted decisions</h3><p>Open-weight Laya runs where your application runs. It gives teams a local path for frequent, bounded decision tasks and an option to fine-tune on their own labelled examples.</p><ul class="feature-list"><li>Apache 2.0 and self-hosted</li><li>Data remains on your infrastructure</li><li>Fine-tuning workflow for domain-labelled data</li><li>Local development and CI without a hosted API key</li><li>Server-side routing, abstention and batch inference</li></ul></article>
+    <article class="card jev"><span class="pill blue">Jev</span><h3>Managed decisions for managed operations</h3><p>Jev is the hosted TypeSafe decision model. It is the natural choice where teams want a managed service, broad zero-shot coverage, or a larger decision space without operating inference infrastructure.</p><ul class="feature-list"><li>Hosted API with no model-serving work</li><li>Strong fit for broad and many-option choices</li><li>Published multilingual benchmark coverage</li><li>Use it as the escalation path for selected work</li><li>Same typed questions and Spring AI components</li></ul></article>
+  </div>
+  <figure class="figure"><img src="assets/decision-models.png" alt="Side-by-side diagram showing Laya local deployment and Jev managed deployment feeding the same Spring AI application."><figcaption>Choose a deployment path per workload, or combine both behind one <code>TypeSafeClient</code> API.</figcaption></figure>
+</div></section>
+
+<section id="evidence"><div class="container">
+  <div class="section-heading"><p class="eyebrow" style="color:#087f8c">Evidence</p><h2>Position with data, not slogans.</h2><p>Laya is most compelling when the decision space is narrow and repeatable. The benchmark below makes both the fit and the boundary visible.</p></div>
+  <figure class="figure"><img src="assets/benchmark.png" alt="Benchmark bars for Laya accuracy and calibration on SST-2, AG News, and Banking77."><figcaption>Laya-only results: Jev has not been measured in a paired run yet. Zero-shot Laya 0.4.19, English checkpoint, CPU. Accuracy from 200 SST-2 examples, 200 AG News examples, and 154 Banking77 examples. Lower ECE means better calibration.</figcaption></figure>
+  <div class="table-wrap" style="margin-top:25px"><table>
+    <thead><tr><th>Decision shape</th><th>Laya result measured here</th><th>How to use it</th><th>Jev role</th></tr></thead>
+    <tbody>
+      <tr><td>Small, stable choice space<br><small>2 to about 20 options</small></td><td><strong>0.910</strong> SST-2 and <strong>0.935</strong> AG News accuracy. <code>answer_confidence</code> ECE: 0.050 and 0.067.</td><td><span class="table-label local">Local primary</span><br>Route or triage locally. At a 0.75 confidence floor, Laya served 80% of SST-2 at 95.6% accuracy and 87% of AG News at 97.1%.</td><td>Escalate the remaining low-confidence cases, or use Jev when fully managed operations are preferred.</td></tr>
+      <tr><td>Large label space<br><small>77 options in Banking77</small></td><td>0.370 accuracy. ECE 0.527 means confidence alone does not reliably separate good decisions.</td><td><span class="table-label local">Use with guardrails</span><br>Shortlist candidates first, enable Laya's tournament after validation, or fine-tune and measure.</td><td><span class="table-label managed">Managed primary</span><br>Use Jev for direct broad-label classification, then keep Laya for local pre-filtering.</td></tr>
+      <tr><td>Subtle evaluation or broad world knowledge</td><td>Use domain-specific criteria and deterministic checks. Our live judge test shows this needs workload validation.</td><td><span class="table-label local">Targeted screening</span><br>Keep Laya to assess bounded, explicitly stated rules.</td><td><span class="table-label managed">Escalation</span><br>Use Jev when the decision needs broader zero-shot judgement.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="source-note">Read the visual <a href="laya-spring-ai-guide.html">architecture and implementation tutorial</a>. The <a href="https://github.com/vaquarkhan/spring-ai-laya/blob/main/laya-benchmarks/BENCHMARK-PROTOCOL.md">benchmark protocol</a> defines the strict same-data Laya/Jev comparison contract, and <a href="https://github.com/vaquarkhan/spring-ai-laya/blob/main/laya-benchmarks/results/RESULTS.md">benchmark results</a> show the raw local run.</p>
+</div></section>
+
+<section class="white" id="use-cases"><div class="container">
+  <div class="section-heading"><p class="eyebrow" style="color:#087f8c">Use cases</p><h2>Where local typed decisions create leverage.</h2><p>The best first deployments are high-volume, bounded decisions where local data handling and repeatable routing matter.</p></div>
+  <div class="use-grid">
+    <article class="use-case"><div class="number">01</div><h3>Private RAG triage</h3><p>Screen retrieved passages for relevance and obvious injection attempts before they reach the LLM. Keep Laya beside sensitive documents. Escalate only the cases your policy marks uncertain.</p></article>
+    <article class="use-case"><div class="number">02</div><h3>Support routing</h3><p>Route short, English tickets through a stable set of queues such as billing, technical support and account access. Fine-tune on your own historical labels when the language is domain-specific.</p></article>
+    <article class="use-case"><div class="number">03</div><h3>Agent tool selection</h3><p>Choose among a bounded set of tools before an agent runs them. Preserve an authorization layer for side effects, then escalate low-confidence or high-impact choices.</p></article>
+  </div>
+  <figure class="figure"><img src="assets/local-first-flow.png" alt="Flow diagram: application sends decision to Laya, accepts high-confidence narrow choices locally and escalates broad or low-confidence cases to Jev or a human review path."><figcaption>Laya-first is a routing policy, not a claim that one model must answer every decision.</figcaption></figure>
+</div></section>
+
+<section id="developer"><div class="container">
+  <div class="section-heading"><p class="eyebrow" style="color:#087f8c">Developer tutorial</p><h2>Start local. Keep the application code stable.</h2><p>The Laya adapter is a <code>TypeSafeClient</code>. Existing Spring AI components retain their APIs, while the adapter handles Laya-specific confidence, batching and observability.</p></div>
+  <div class="code-grid">
+    <div class="card"><h3>1. Run Laya</h3><p>Run the self-hosted server. The first startup downloads the configured checkpoint.</p><pre class="code-card"><code><span class="code-comment"># CPU example</span>
+uv venv --python 3.12
+uv pip install --torch-backend=cpu \
+  <span class="code-string">"laya[serve]"</span>
+
+LAYA_MODELS=english \
+LAYA_DEFAULT_MODEL=english \
+LAYA_PRELOAD=1 \
+laya-serve</code></pre></div>
+    <div class="card"><h3>2. Select Laya in Spring Boot</h3><p>Adding a base URL creates a Laya-backed <code>TypeSafeClient</code>. Existing builders keep working.</p><div class="code-card"><header>application-laya.properties</header><pre><code><span class="code-key">spring.ai.laya.base-url</span>=http://localhost:8000
+<span class="code-key">spring.ai.laya.model</span>=auto
+<span class="code-key">spring.ai.laya.confidence-metric</span>=jev
+<span class="code-key">spring.ai.laya.options.min-confidence</span>=0.75
+
+<span class="code-comment"># For high-volume CPU work, tune after measuring:</span>
+<span class="code-key">spring.ai.laya.rows-per-batch-call</span>=16
+<span class="code-key">spring.ai.laya.max-concurrent-batch-calls</span>=1</code></pre></div></div>
+  </div>
+  <div class="code-grid" style="margin-top:22px">
+    <div class="card"><h3>3. Reuse existing Spring AI components</h3><p>The filter receives a Laya-backed TypeSafe client. Compatible work automatically uses the Laya batch endpoint.</p><div class="code-card"><header>RAG configuration</header><pre><code><span class="code-key">@Bean</span>
+JevDocumentFilter documentFilter(
+    TypeSafeClient client) {
+  <span class="code-key">return</span> JevDocumentFilter.builder(client)
+      .build();
+}</code></pre></div></div>
+    <div class="card"><h3>4. Enable the managed path when you need it</h3><p>A hybrid client keeps local handling for qualifying requests and routes selected cases to Jev. Escalated requests, including their full state, are sent to the Jev service, so the starter refuses to start until <code>spring.ai.laya.escalation.allow-external-data-export=true</code> confirms the export is approved.</p><div class="code-card"><header>application-hybrid.properties</header><pre><code><span class="code-key">spring.ai.typesafe.api-key</span>=${TYPESAFE_API_KEY}
+<span class="code-key">spring.ai.laya.escalation.enabled</span>=true
+<span class="code-key">spring.ai.laya.escalation.allow-external-data-export</span>=true
+<span class="code-key">spring.ai.laya.escalation.min-answer-confidence</span>=0.75
+<span class="code-key">spring.ai.laya.escalation.max-laya-choice-options</span>=20</code></pre></div></div>
+  </div>
+  <div class="callout" style="margin-top:25px"><strong>Important: validate thresholds per checkpoint and workload.</strong><p>Laya's native confidence is entropy-based. The adapter defaults to the Jev formula so existing Jev thresholds retain their intended meaning. For Laya-specific gating, tune against <code>answer_confidence</code> using labelled examples from your own workload.</p></div>
+  <p class="source-note">Read the <a href="laya-spring-ai-guide.html">full end-to-end tutorial</a> for Maven setup, Java-only configuration, testing, routing policy, observability and production checks.</p>
+</div></section>
+
+<section class="white" id="tools"><div class="container"><div class="section-heading"><p class="eyebrow" style="color:#087f8c">Developer tools</p><h2>Build, evaluate and operate with visible evidence.</h2><p>Each resource is designed for a different job: learning the integration, validating a model choice, or inspecting the local implementation.</p></div><div class="grid-2"><div class="card"><h3>Architecture tutorial</h3><p>Read the long-form <a href="laya-spring-ai-guide.html">Laya and Spring AI tutorial</a>. It covers LayaClient, the TypeSafe adapter, RAG batching, confidence semantics, hybrid routing and production operations.</p><p><a class="button primary" href="laya-spring-ai-guide.html">Open tutorial</a></p></div><div class="card"><h3>Developer reference</h3><p>Use the concise <a href="DEVELOPER-TUTORIAL.md">developer reference</a> while implementing: local server setup, Spring Boot properties, Java API examples, RAG integration, observability and deployment checks.</p><p><a class="button primary" href="DEVELOPER-TUTORIAL.md">Open reference</a></p></div><div class="card"><h3>Benchmark protocol</h3><p>Review the <a href="https://github.com/vaquarkhan/spring-ai-laya/blob/main/laya-benchmarks/BENCHMARK-PROTOCOL.md">strict Laya/Jev parity protocol</a>. It fixes the inputs, question schema, ordering and evaluator, records hashes, and stops incomplete comparisons.</p><p><a class="button primary" href="https://github.com/vaquarkhan/spring-ai-laya/blob/main/laya-benchmarks/BENCHMARK-PROTOCOL.md">Open protocol</a></p></div><div class="card"><h3>Benchmark results</h3><p>Inspect the <a href="https://github.com/vaquarkhan/spring-ai-laya/blob/main/laya-benchmarks/results/RESULTS.md">measured Laya results</a>, the JSON receipt and raw probes. Results are labelled by model, checkpoint, hardware and method.</p><p><a class="button primary" href="https://github.com/vaquarkhan/spring-ai-laya/blob/main/laya-benchmarks/results/RESULTS.md">Open results</a></p></div></div></div></section>
+
+<section id="benchmarks"><div class="container"><div class="section-heading"><p class="eyebrow" style="color:#087f8c">Benchmarking</p><h2>Reproduce the comparison before you adopt it.</h2><p>The benchmark stays local to the repository. It has no dependency on the GitHub Pages site and records the inputs needed to review a result.</p></div><div class="callout"><strong>Run a strict side-by-side comparison.</strong><p>Start local Laya, set an authorized <code>TYPESAFE_API_KEY</code>, then run the benchmark with <code>-Dbench.requireBoth=true</code>. It writes a parity receipt and refuses to report if either backend returns fewer decisions than the fixed input count.</p></div><div class="code-card" style="margin-top:22px"><header>PowerShell</header><pre><code>$env:LAYA_BASE_URL = <span class="code-string">'http://localhost:8000'</span>
+$env:TYPESAFE_API_KEY = <span class="code-string">'your-Jev-key'</span>
+mvn -pl laya-benchmarks exec:java `
+  <span class="code-string">'-Dbench.requireBoth=true'</span> `
+  <span class="code-string">'-Dbench.laya.model=english'</span> `
+  <span class="code-string">'-Dbench.jev.model=jev-latest'</span></code></pre></div><p class="source-note">For the decision lifecycle perspective behind calibration, held-out evaluation, routing and drift, read <a href="EMBEDDING-STUDIO-PERSPECTIVE.md">Embedding Studio perspective</a>.</p></div></section>
+</main>
+<footer><div class="container">spring-ai-laya is an independent project, not affiliated with or endorsed by TypeSafe AI, the Spring AI Community or the Laya authors. <a href="https://github.com/NandhaKishorM/laya">Laya</a> is Apache 2.0. Content is based on locally verified behavior and linked public documentation.</div></footer>
+</body></html>

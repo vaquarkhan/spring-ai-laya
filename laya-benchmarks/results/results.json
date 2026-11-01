@@ -1,0 +1,230 @@
+{
+  "date" : "2026-11-01T00:58:18.580876100-05:00",
+  "comparison_mode" : "Laya-only: no TYPESAFE_API_KEY",
+  "laya_model" : "english",
+  "jev_model" : "jev-latest",
+  "laya" : {
+    "device" : "cpu",
+    "loaded" : [ "english" ],
+    "revisions" : {
+      "english" : "7b928d828b7b0e022f929d9bd2e44165aa270148"
+    }
+  },
+  "host" : {
+    "cores" : 14,
+    "java" : "21.0.12.1",
+    "os" : "Windows 11"
+  },
+  "jev" : "not measured: TYPESAFE_API_KEY not set",
+  "accuracy" : {
+    "SST-2" : {
+      "source" : "stanfordnlp/sst2 validation",
+      "examples" : 200,
+      "options" : 2,
+      "parity_receipt" : {
+        "rule" : "Same labelled state, same question id, same type, same instructions, same criteria text, same criteria order; backend-native model selection and batch transport may differ.",
+        "examples" : 200,
+        "state_label_sha256" : "a62441a1b089efcffc8b8ecd23f67485cf822550ca57684a5c082917bd8b2d9a",
+        "question_sha256" : "37bbe2fa424ea8541954bb23e66c2de8eab2a43b1c0d87cbc248d776d3154547",
+        "question_id" : "label",
+        "question_type" : "choice",
+        "option_count" : 2,
+        "laya_model" : "english",
+        "jev_model" : "jev-latest",
+        "laya_batching" : "server-native batch endpoint; preserves input order",
+        "jev_batching" : "TypeSafeClient systemOneAll, concurrency 4; preserves input order"
+      },
+      "laya" : {
+        "answered" : 200,
+        "accuracy" : 0.91,
+        "wall_seconds" : 217.927,
+        "ms_per_example" : 1089.636,
+        "ece_answer_confidence" : 0.05,
+        "ece_jev_formula" : 0.176,
+        "ece_entropy" : 0.375,
+        "selective" : [ {
+          "min_answer_confidence" : 0.5,
+          "served_share" : 1.0,
+          "accuracy_when_served" : 0.91
+        }, {
+          "min_answer_confidence" : 0.6,
+          "served_share" : 0.93,
+          "accuracy_when_served" : 0.941
+        }, {
+          "min_answer_confidence" : 0.7,
+          "served_share" : 0.84,
+          "accuracy_when_served" : 0.952
+        }, {
+          "min_answer_confidence" : 0.75,
+          "served_share" : 0.8,
+          "accuracy_when_served" : 0.956
+        }, {
+          "min_answer_confidence" : 0.8,
+          "served_share" : 0.745,
+          "accuracy_when_served" : 0.966
+        }, {
+          "min_answer_confidence" : 0.9,
+          "served_share" : 0.605,
+          "accuracy_when_served" : 0.975
+        } ],
+        "gate_floor_0_6" : {
+          "escalated_with_native_confidence" : 0.46,
+          "escalated_with_jev_formula" : 0.255,
+          "decisions_that_differ" : 0.205,
+          "accuracy_of_differing" : 0.927
+        }
+      }
+    },
+    "AG News" : {
+      "source" : "fancyzhx/ag_news test",
+      "examples" : 200,
+      "options" : 4,
+      "parity_receipt" : {
+        "rule" : "Same labelled state, same question id, same type, same instructions, same criteria text, same criteria order; backend-native model selection and batch transport may differ.",
+        "examples" : 200,
+        "state_label_sha256" : "55232ef4d59b83123cf50ce139389ddfa6d701f690c5de595765836bdf5e735a",
+        "question_sha256" : "18fbdff596e12d969b868797775f7e24cd4ab560cfa01c3c4e2f32a75960382a",
+        "question_id" : "label",
+        "question_type" : "choice",
+        "option_count" : 4,
+        "laya_model" : "english",
+        "jev_model" : "jev-latest",
+        "laya_batching" : "server-native batch endpoint; preserves input order",
+        "jev_batching" : "TypeSafeClient systemOneAll, concurrency 4; preserves input order"
+      },
+      "laya" : {
+        "answered" : 200,
+        "accuracy" : 0.935,
+        "wall_seconds" : 457.929,
+        "ms_per_example" : 2289.645,
+        "ece_answer_confidence" : 0.067,
+        "ece_jev_formula" : 0.095,
+        "ece_entropy" : 0.221,
+        "selective" : [ {
+          "min_answer_confidence" : 0.5,
+          "served_share" : 0.97,
+          "accuracy_when_served" : 0.959
+        }, {
+          "min_answer_confidence" : 0.6,
+          "served_share" : 0.95,
+          "accuracy_when_served" : 0.968
+        }, {
+          "min_answer_confidence" : 0.7,
+          "served_share" : 0.91,
+          "accuracy_when_served" : 0.973
+        }, {
+          "min_answer_confidence" : 0.75,
+          "served_share" : 0.87,
+          "accuracy_when_served" : 0.971
+        }, {
+          "min_answer_confidence" : 0.8,
+          "served_share" : 0.845,
+          "accuracy_when_served" : 0.976
+        }, {
+          "min_answer_confidence" : 0.9,
+          "served_share" : 0.64,
+          "accuracy_when_served" : 0.984
+        } ],
+        "gate_floor_0_6" : {
+          "escalated_with_native_confidence" : 0.24,
+          "escalated_with_jev_formula" : 0.09,
+          "decisions_that_differ" : 0.15,
+          "accuracy_of_differing" : 0.967
+        }
+      }
+    },
+    "Banking77" : {
+      "source" : "PolyAI/banking77 test, 2 per intent",
+      "examples" : 154,
+      "options" : 77,
+      "parity_receipt" : {
+        "rule" : "Same labelled state, same question id, same type, same instructions, same criteria text, same criteria order; backend-native model selection and batch transport may differ.",
+        "examples" : 154,
+        "state_label_sha256" : "8438b7aea02c8c5cbc505ed1377f74bcfe679535eae79dfe2eaa75a2f1c16180",
+        "question_sha256" : "7f11dbfa2684bf14fe711aa781b6c71650bfdcaaa0518668c279b6bb6884434c",
+        "question_id" : "label",
+        "question_type" : "choice",
+        "option_count" : 77,
+        "laya_model" : "english",
+        "jev_model" : "jev-latest",
+        "laya_batching" : "server-native batch endpoint; preserves input order",
+        "jev_batching" : "TypeSafeClient systemOneAll, concurrency 4; preserves input order"
+      },
+      "laya" : {
+        "answered" : 154,
+        "accuracy" : 0.37,
+        "wall_seconds" : 709.627,
+        "ms_per_example" : 4607.969,
+        "ece_answer_confidence" : 0.527,
+        "ece_jev_formula" : 0.523,
+        "ece_entropy" : 0.549,
+        "selective" : [ {
+          "min_answer_confidence" : 0.5,
+          "served_share" : 0.909,
+          "accuracy_when_served" : 0.379
+        }, {
+          "min_answer_confidence" : 0.6,
+          "served_share" : 0.877,
+          "accuracy_when_served" : 0.378
+        }, {
+          "min_answer_confidence" : 0.7,
+          "served_share" : 0.851,
+          "accuracy_when_served" : 0.389
+        }, {
+          "min_answer_confidence" : 0.75,
+          "served_share" : 0.825,
+          "accuracy_when_served" : 0.402
+        }, {
+          "min_answer_confidence" : 0.8,
+          "served_share" : 0.799,
+          "accuracy_when_served" : 0.407
+        }, {
+          "min_answer_confidence" : 0.9,
+          "served_share" : 0.747,
+          "accuracy_when_served" : 0.435
+        } ],
+        "gate_floor_0_6" : {
+          "escalated_with_native_confidence" : 0.071,
+          "escalated_with_jev_formula" : 0.13,
+          "decisions_that_differ" : 0.058,
+          "accuracy_of_differing" : 0.333
+        }
+      }
+    }
+  },
+  "latency" : {
+    "requests" : 20,
+    "questions_per_request" : 1,
+    "client_ms" : {
+      "p50" : 5323.319,
+      "p95" : 12399.668,
+      "min" : 1254.329,
+      "max" : 13257.995
+    },
+    "server_inference_ms" : {
+      "p50" : 5281.55,
+      "p95" : 12385.54,
+      "min" : 1239.97,
+      "max" : 13245.73
+    }
+  },
+  "systemOneAll" : {
+    "requests" : 32,
+    "adapter_settings" : "rowsPerBatchCall=16, maxConcurrentBatchCalls=1",
+    "plain_typesafe_client_fanout4_ms_runs" : [ 151756.138, 87955.055 ],
+    "laya_adapter_ms_runs" : [ 39728.748, 37634.097 ],
+    "plain_succeeded" : 32,
+    "adapter_succeeded" : 32,
+    "speedup_best_of_runs" : 2.337,
+    "same_label" : "32/32"
+  },
+  "ragFilter" : {
+    "passages" : 16,
+    "questions_per_passage" : 4,
+    "plain_typesafe_client_ms_runs" : [ 228705.481, 142764.181 ],
+    "laya_adapter_ms_runs" : [ 128208.702, 211487.902 ],
+    "speedup_best_of_runs" : 1.114,
+    "kept_plain" : [ "CONFLICTING: North Korea Talks Still On, China Tells Downer (Reuters) Reuters - ..." ],
+    "kept_adapter" : [ "CONFLICTING: North Korea Talks Still On, China Tells Downer (Reuters) Reuters - ..." ]
+  }
+}
